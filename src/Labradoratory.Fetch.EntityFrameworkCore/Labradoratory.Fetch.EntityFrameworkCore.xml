@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Labradoratory.Fetch.EntityFrameworkCore</name>
+    </assembly>
+    <members>
+        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1">
+            <summary>
+            An implementation of <see cref="T:Labradoratory.Fetch.IAsyncQueryResolver`1"/> that targets Entity Framework Core.
+            </summary>
+            <typeparam name="T">The type of value being resolved.</typeparam>
+            <seealso cref="T:Labradoratory.Fetch.IAsyncQueryResolver`1" />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.#ctor(System.Linq.IQueryable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1"/> class.
+            </summary>
+            <param name="query">The query to resolve asynchronously.</param>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.AnyAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.AnyAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.CountAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.FirstAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.FirstAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.FirstOrDefaultAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.FirstOrDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.SingleAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.SingleAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.SingleOrDefaultAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.SingleOrDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.ToListAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2">
+            <summary>
+            A default implementation of <see cref="T:Labradoratory.Fetch.Repository`1"/> targting the 
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TContext">The type of <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> handling the entity.</typeparam>
+            <seealso cref="T:Labradoratory.Fetch.Repository`1" />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.#ctor(`1,Labradoratory.Fetch.Processors.ProcessorPipeline)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2"/> class.
+            </summary>
+            <param name="context">The context.</param>
+            <param name="processorPipeline">The processor pipeline.</param>
+        </member>
+        <member name="P:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.Context">
+            <summary>
+            The context to use to access the database.
+            </summary>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.FindAsync(System.Object[],System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.Get">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.GetAsyncQueryResolver``1(System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{``0}})">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.ExecuteAddAsync(`0,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.ExecuteDeleteAsync(`0,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.ExecuteUpdateAsync(`0,Labradoratory.Fetch.ChangeTracking.ChangeSet,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IApplicationBuilderExtensions">
+            <summary>
+            Methods to make working with <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> a little easier.
+            </summary>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IApplicationBuilderExtensions.UseFetchEntityFrameworkCore(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Uses the fetch entity framework core.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

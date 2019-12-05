@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7EC73C4-0DA0-4EAA-A88D-B8932B934465}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
+		gitversion.yml = gitversion.yml
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF5FD4E6-06AF-4F2E-BC3F-F20540042158}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{EF210CF5-4CE2-48D3-9533-0B5E8A67ADD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labradoratory.Fetch.EntityFrameworkCore", "src\Labradoratory.Fetch.EntityFrameworkCore\Labradoratory.Fetch.EntityFrameworkCore.csproj", "{31EA1CFB-2F38-4BDE-84CB-741312007024}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labradoratory.Fetch.EntityFrameworkCore.Test", "test\Labradoratory.Fetch.EntityFrameworkCore.Test\Labradoratory.Fetch.EntityFrameworkCore.Test.csproj", "{FD5FC618-5F5B-46FD-AAA3-AD4DA71F9A6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31EA1CFB-2F38-4BDE-84CB-741312007024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31EA1CFB-2F38-4BDE-84CB-741312007024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31EA1CFB-2F38-4BDE-84CB-741312007024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31EA1CFB-2F38-4BDE-84CB-741312007024}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5FC618-5F5B-46FD-AAA3-AD4DA71F9A6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5FC618-5F5B-46FD-AAA3-AD4DA71F9A6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5FC618-5F5B-46FD-AAA3-AD4DA71F9A6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5FC618-5F5B-46FD-AAA3-AD4DA71F9A6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31EA1CFB-2F38-4BDE-84CB-741312007024} = {EF5FD4E6-06AF-4F2E-BC3F-F20540042158}
+		{FD5FC618-5F5B-46FD-AAA3-AD4DA71F9A6C} = {EF210CF5-4CE2-48D3-9533-0B5E8A67ADD9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {213960E0-E864-4514-9642-D43944284E63}
+	EndGlobalSection
+EndGlobal

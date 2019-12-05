@@ -1,0 +1,12 @@
+﻿<SolutionConfiguration>
+  <Settings>
+    <AllowParallelTestExecution>True</AllowParallelTestExecution>
+    <MetricsExclusionList>
+      <Value>test\Labradoratory.Fetch.EntityFrameworkCore.Test\Labradoratory.Fetch.EntityFrameworkCore.Test.csproj</Value>
+      <Value>Common.cs:test\Labradoratory.Fetch.EntityFrameworkCore.Test\Labradoratory.Fetch.EntityFrameworkCore.Test.csproj</Value>
+      <Value>EntityFrameworkCoreAsyncQueryResolver_Tests.cs:test\Labradoratory.Fetch.EntityFrameworkCore.Test\Labradoratory.Fetch.EntityFrameworkCore.Test.csproj</Value>
+      <Value>EntityFrameworkCoreRepository_Tests.cs:test\Labradoratory.Fetch.EntityFrameworkCore.Test\Labradoratory.Fetch.EntityFrameworkCore.Test.csproj</Value>
+    </MetricsExclusionList>
+    <SolutionConfigured>True</SolutionConfigured>
+  </Settings>
+</SolutionConfiguration>
