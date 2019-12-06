@@ -10,7 +10,7 @@
     <RepositoryType>github</RepositoryType>
     <PackageTags>repository entity framework core ef fetch</PackageTags>
     <RepositoryUrl>https://github.com/Labradoratory/Fetch.EntityFrameworkCore</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
