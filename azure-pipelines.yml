@@ -68,11 +68,11 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet test $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
+  displayName: 'dotnet test $(buildConfiguration)'
   inputs:
     command: 'test'
     projects: '**/*Test/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura'
 
 - script: |
     dotnet tool install -g dotnet-reportgenerator-globaltool
