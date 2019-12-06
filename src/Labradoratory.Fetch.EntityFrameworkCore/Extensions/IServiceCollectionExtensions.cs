@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Labradoratory.Fetch.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
 {
@@ -12,11 +13,11 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         /// </summary>
         /// <param name="serviceCollection">The service collection.</param>
         /// <returns></returns>
-        public static IServiceCollection AddFetchForEntityFrameworkCore(this IServiceCollection serviceCollection)
+        public static EntityFrameworkCoreRepositoryRegistrar AddFetchForEntityFrameworkCore(this IServiceCollection serviceCollection)
         {
-            //serviceCollection.AddFetch();
+            serviceCollection.AddFetch();
 
-            return serviceCollection;
-        }
-    }
+            return new EntityFrameworkCoreRepositoryRegistrar(serviceCollection);
+        }        
+    }    
 }
