@@ -94,16 +94,47 @@
         <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.ExecuteUpdateAsync(`0,Labradoratory.Fetch.ChangeTracking.ChangeSet,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IApplicationBuilderExtensions">
+        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar">
             <summary>
-            Methods to make working with <see cref="T:Microsoft.AspNetCore.Builder.IApplicationBuilder"/> a little easier.
+            A class to help register Fetch repositories that target Microsoft's Entity Framework Core.
             </summary>
         </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IApplicationBuilderExtensions.UseFetchEntityFrameworkCore(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Uses the fetch entity framework core.
+            Initializes a new instance of the <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar"/> class.
             </summary>
-            <param name="builder">The builder.</param>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar.RegisterRepository``2">
+            <summary>
+            Registers a default <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2"/> for the specified entity type.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TContext">The type of the context.</typeparam>
+            <returns>The <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar"/>.</returns>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar.RegisterRepository``3">
+            <summary>
+            Registers a repository of type <typeparamref name="TRepository"/> for the specified entity type.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TContext">The type of the context.</typeparam>
+            <typeparam name="TRepository">The type of the repository.</typeparam>
+            <returns>The <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar"/>.</returns>
+            <remarks>
+            <para>This method also registers the repository as <see cref="T:Labradoratory.Fetch.Repository`1"/>.</para>
+            </remarks>
+        </member>
+        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions">
+            <summary>
+            Methods to make working with <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> a little easier.
+            </summary>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.AddFetchForEntityFrameworkCore(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Adds the depedencies for the Fetch library targetting Entity Framework Core.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
             <returns></returns>
         </member>
     </members>
