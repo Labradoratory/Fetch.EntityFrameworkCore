@@ -6,7 +6,7 @@ using Xunit;
 
 namespace Labradoratory.Fetch.EntityFrameworkCore.Test
 {
-    public class EntityFrameworkCoreRepositoryRegistrar_Test
+    public class EntityFrameworkCoreRepositoryRegistrar_Tests
     {
         [Fact]
         public void RegisterRepository_AddsDefaultImplementation()
@@ -20,8 +20,8 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()))
                 .Callback<ServiceDescriptor>(d => serviceDescriptors.Add(d));
 
-            var subject = new EntityFrameworkCoreRepositoryRegistrar(mockServiceCollection.Object);
-            subject.RegisterRepository<TestEntity, TestContext>();
+            var subject = new EntityFrameworkCoreRepositoryRegistrar<TestContext>(mockServiceCollection.Object);
+            subject.RegisterRepository<TestEntity>();
 
             mockServiceCollection.Verify(sc => sc.Add(
                 It.Is<ServiceDescriptor>(v => v.ServiceType == typeof(Repository<TestEntity>)
@@ -41,8 +41,8 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()))
                 .Callback<ServiceDescriptor>(d => serviceDescriptors.Add(d));
 
-            var subject = new EntityFrameworkCoreRepositoryRegistrar(mockServiceCollection.Object);
-            subject.RegisterRepository<TestEntity, TestContext, TestRepository>();
+            var subject = new EntityFrameworkCoreRepositoryRegistrar<TestContext>(mockServiceCollection.Object);
+            subject.RegisterRepository<TestEntity, TestRepository>();
 
             mockServiceCollection.Verify(sc => sc.Add(
                 It.Is<ServiceDescriptor>(v => v.ServiceType == typeof(Repository<TestEntity>)

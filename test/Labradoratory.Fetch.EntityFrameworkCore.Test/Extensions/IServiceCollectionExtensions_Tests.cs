@@ -19,7 +19,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Extensions
                 .Returns(Enumerable.Empty<ServiceDescriptor>().GetEnumerator());
             var expectedServiceCollection = mockServiceCollection.Object;
             var result = expectedServiceCollection.AddFetchForEntityFrameworkCore();
-            Assert.IsType<EntityFrameworkCoreRepositoryRegistrar>(result);
+            Assert.IsType<EntityFrameworkCoreDbContextRegistrar>(result);
         }
 
         [Fact]
