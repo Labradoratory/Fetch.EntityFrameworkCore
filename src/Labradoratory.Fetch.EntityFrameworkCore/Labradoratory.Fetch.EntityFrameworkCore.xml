@@ -56,187 +56,6 @@
         <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreAsyncQueryResolver`1.ToListAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar">
-            <summary>
-            A class for registering a <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> with the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> instance.
-            </summary>
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar"/> class.
-            </summary>
-            <param name="serviceCollection">The service collection.</param>
-        </member>
-        <member name="P:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar.ServiceCollection">
-            <summary>
-            Gets the service collection.
-            </summary>
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar.AddDbContext``1(System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
-            <summary>
-                Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
-                You use this method when using dependency injection in your application, such as with ASP.NET.
-                For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
-            </summary>
-            <typeparam name="TContext"> The type of context to be registered. </typeparam>
-            <param name="optionsAction">
-                <para>
-                    An optional action to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions" /> for the context. This provides an
-                    alternative to performing configuration of the context by overriding the
-                    <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method in your derived context.
-                </para>
-                <para>
-                    If an action is supplied here, the <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method will still be run if it has
-                    been overridden on the derived context. <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> configuration will be applied
-                    in addition to configuration performed here.
-                </para>
-                <para>
-                    In order for the options to be passed into your context, you need to expose a constructor on your context that takes
-                    <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1" /> and passes it to the base constructor of <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
-                </para>
-            </param>
-            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
-            <returns>
-                The same service collection so that multiple calls can be chained.
-            </returns>
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar.AddDbContext``1(Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
-            <summary>
-                Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
-                You use this method when using dependency injection in your application, such as with ASP.NET.
-                For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
-            </summary>
-            <typeparam name="TContext"> The type of context to be registered. </typeparam>
-            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
-            <returns>
-                The same service collection so that multiple calls can be chained.
-            </returns>
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar.AddDbContext``1(System.Action{System.IServiceProvider,Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
-            <summary>
-                <para>
-                    Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
-                    You use this method when using dependency injection in your application, such as with ASP.NET.
-                    For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
-                </para>
-                <para>
-                    This overload has an <paramref name="optionsAction" /> that provides the applications <see cref="T:System.IServiceProvider" />.
-                    This is useful if you want to setup Entity Framework to resolve its internal services from the primary application service
-                    provider.
-                    By default, we recommend using the other overload, which allows Entity Framework to create and maintain its own
-                    <see cref="T:System.IServiceProvider" />
-                    for internal Entity Framework services.
-                </para>
-            </summary>
-            <typeparam name="TContext"> The type of context to be registered. </typeparam>
-            <param name="optionsAction">
-                <para>
-                    An optional action to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions" /> for the context. This provides an
-                    alternative to performing configuration of the context by overriding the
-                    <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method in your derived context.
-                </para>
-                <para>
-                    If an action is supplied here, the <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method will still be run if it has
-                    been overridden on the derived context. <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> configuration will be applied
-                    in addition to configuration performed here.
-                </para>
-                <para>
-                    In order for the options to be passed into your context, you need to expose a constructor on your context that takes
-                    <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1" /> and passes it to the base constructor of <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
-                </para>
-            </param>
-            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
-            <returns>
-                The same service collection so that multiple calls can be chained.
-            </returns>
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar.AddDbContext``2(System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
-            <summary>
-                Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
-                You use this method when using dependency injection in your application, such as with ASP.NET.
-                For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
-            </summary>
-            <typeparam name="TContextService"> The class or interface that will be used to resolve the context from the container. </typeparam>
-            <typeparam name="TContextImplementation"> The concrete implementation type to create. </typeparam>
-            <param name="optionsAction">
-                <para>
-                    An optional action to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions" /> for the context. This provides an
-                    alternative to performing configuration of the context by overriding the
-                    <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method in your derived context.
-                </para>
-                <para>
-                    If an action is supplied here, the <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method will still be run if it has
-                    been overridden on the derived context. <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> configuration will be applied
-                    in addition to configuration performed here.
-                </para>
-                <para>
-                    In order for the options to be passed into your context, you need to expose a constructor on your context that takes
-                    <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1" /> and passes it to the base constructor of <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
-                </para>
-            </param>
-            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
-            <returns>
-                The same service collection so that multiple calls can be chained.
-            </returns>
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar.AddDbContext``2(Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
-            <summary>
-                Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
-                You use this method when using dependency injection in your application, such as with ASP.NET.
-                For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
-            </summary>
-            <typeparam name="TContextService"> The class or interface that will be used to resolve the context from the container. </typeparam>
-            <typeparam name="TContextImplementation"> The concrete implementation type to create. </typeparam>
-            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
-            <returns>
-                The same service collection so that multiple calls can be chained.
-            </returns>
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar.AddDbContext``2(System.Action{System.IServiceProvider,Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
-            <summary>
-                <para>
-                    Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
-                    You use this method when using dependency injection in your application, such as with ASP.NET.
-                    For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
-                </para>
-                <para>
-                    This overload has an <paramref name="optionsAction" /> that provides the applications <see cref="T:System.IServiceProvider" />.
-                    This is useful if you want to setup Entity Framework to resolve its internal services from the primary application service
-                    provider.
-                    By default, we recommend using the other overload, which allows Entity Framework to create and maintain its own
-                    <see cref="T:System.IServiceProvider" />
-                    for internal Entity Framework services.
-                </para>
-            </summary>
-            <typeparam name="TContextService"> The class or interface that will be used to resolve the context from the container. </typeparam>
-            <typeparam name="TContextImplementation"> The concrete implementation type to create. </typeparam>
-            <param name="optionsAction">
-                <para>
-                    An optional action to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions" /> for the context. This provides an
-                    alternative to performing configuration of the context by overriding the
-                    <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method in your derived context.
-                </para>
-                <para>
-                    If an action is supplied here, the <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method will still be run if it has
-                    been overridden on the derived context. <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> configuration will be applied
-                    in addition to configuration performed here.
-                </para>
-                <para>
-                    In order for the options to be passed into your context, you need to expose a constructor on your context that takes
-                    <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1" /> and passes it to the base constructor of <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
-                </para>
-            </param>
-            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
-            <returns>
-                The same service collection so that multiple calls can be chained.
-            </returns>
-        </member>
         <member name="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2">
             <summary>
             A default implementation of <see cref="T:Labradoratory.Fetch.Repository`1"/> targting the 
@@ -315,7 +134,131 @@
             Adds the depedencies for the Fetch library targetting Entity Framework Core.
             </summary>
             <param name="serviceCollection">The service collection.</param>
-            <returns>A <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreDbContextRegistrar"/> which can be used to register <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/>.</returns>
+            <returns>A <paramref name="serviceCollection"/>.</returns>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.AddDbContext``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``0}},System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+                Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
+                You use this method when using dependency injection in your application, such as with ASP.NET.
+                For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
+            </summary>
+            <typeparam name="TContext"> The type of context to be registered. </typeparam>
+            <param name="serviceCollection">The service collection.</param>
+            <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
+            <param name="optionsAction">
+                <para>
+                    An optional action to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions" /> for the context. This provides an
+                    alternative to performing configuration of the context by overriding the
+                    <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method in your derived context.
+                </para>
+                <para>
+                    If an action is supplied here, the <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method will still be run if it has
+                    been overridden on the derived context. <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> configuration will be applied
+                    in addition to configuration performed here.
+                </para>
+                <para>
+                    In order for the options to be passed into your context, you need to expose a constructor on your context that takes
+                    <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1" /> and passes it to the base constructor of <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
+                </para>
+            </param>
+            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
+            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
+            <returns>
+                The same service collection so that multiple calls can be chained.
+            </returns>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.AddDbContext``2(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``1}},System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+            <summary>
+                Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
+                You use this method when using dependency injection in your application, such as with ASP.NET.
+                For more information on setting up dependency injection, see http://go.microsoft.com/fwlink/?LinkId=526890.
+            </summary>
+            <typeparam name="TContextService"> The class or interface that will be used to resolve the context from the container. </typeparam>
+            <typeparam name="TContextImplementation"> The concrete implementation type to create. </typeparam>
+            <param name="serviceCollection">The service collection.</param>
+            <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
+            <param name="optionsAction">
+                <para>
+                    An optional action to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions" /> for the context. This provides an
+                    alternative to performing configuration of the context by overriding the
+                    <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method in your derived context.
+                </para>
+                <para>
+                    If an action is supplied here, the <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> method will still be run if it has
+                    been overridden on the derived context. <see cref="M:Microsoft.EntityFrameworkCore.DbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)" /> configuration will be applied
+                    in addition to configuration performed here.
+                </para>
+                <para>
+                    In order for the options to be passed into your context, you need to expose a constructor on your context that takes
+                    <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1" /> and passes it to the base constructor of <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
+                </para>
+            </param>
+            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
+            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
+            <returns>
+                The same service collection so that multiple calls can be chained.
+            </returns>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.WithContext``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``0}})">
+            <summary>
+            Allows registration of repositories for a <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> that has already been configured
+            with Entity Framework Core.
+            </summary>
+            <typeparam name="TContext">The type of the context.</typeparam>
+            <param name="serviceCollection">The service collection.</param>
+            <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
+            <returns>The same <paramref name="serviceCollection"/> so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper">
+            <summary>
+            A base class that simply passes <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> calls to a wrapped instance.
+            </summary>
+            <seealso cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper"/> class.
+            </summary>
+            <param name="serviceCollection">The service collection.</param>
+        </member>
+        <member name="P:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Add(Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Contains(Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.CopyTo(Microsoft.Extensions.DependencyInjection.ServiceDescriptor[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.IndexOf(Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Insert(System.Int32,Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Remove(Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.RemoveAt(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
         </member>
     </members>
 </doc>

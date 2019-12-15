@@ -31,6 +31,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
             where TEntity : Entity
         {
             ServiceCollection.TryAddTransient<Repository<TEntity>, EntityFrameworkCoreRepository<TEntity, TContext>>();
+            ServiceCollection.TryAddTransient<EntityFrameworkCoreRepository<TEntity, TContext>>();
             return this;
         }
 
@@ -48,6 +49,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
             where TRepository : EntityFrameworkCoreRepository<TEntity, TContext>
         {
             ServiceCollection.TryAddTransient<Repository<TEntity>, TRepository>();
+            ServiceCollection.TryAddTransient<EntityFrameworkCoreRepository<TEntity, TContext>, TRepository>();
             ServiceCollection.TryAddTransient<TRepository>();
             return this;
         }
