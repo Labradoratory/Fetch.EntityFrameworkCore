@@ -53,7 +53,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         /// </returns>
         public static IServiceCollection AddDbContext<TContext>(
             this IServiceCollection serviceCollection,
-            Action<EntityFrameworkCoreRepositoryRegistrar<TContext>> repositoryRegistrationAction = null,
+            Action<EntityFrameworkCoreRepositoryRegistrar<TContext>> repositoryRegistrationAction,
             Action<DbContextOptionsBuilder> optionsAction = null,
             ServiceLifetime contextLifetime = ServiceLifetime.Scoped,
             ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
@@ -94,7 +94,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         /// </returns>
         public static IServiceCollection AddDbContext<TContextService, TContextImplementation>(
             this IServiceCollection serviceCollection,
-            Action<EntityFrameworkCoreRepositoryRegistrar<TContextImplementation>> repositoryRegistrationAction = null,
+            Action<EntityFrameworkCoreRepositoryRegistrar<TContextImplementation>> repositoryRegistrationAction,
             Action<DbContextOptionsBuilder> optionsAction = null,
             ServiceLifetime contextLifetime = ServiceLifetime.Scoped,
             ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
@@ -102,12 +102,8 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         {
             repositoryRegistrationAction?.Invoke(new EntityFrameworkCoreRepositoryRegistrar<TContextImplementation>(serviceCollection));
 
-            var oa = optionsAction == null
-                    ? (Action<IServiceProvider, DbContextOptionsBuilder>)null
-                    : (p, b) => optionsAction.Invoke(b);
-
             return serviceCollection.AddDbContext<TContextService, TContextImplementation>(
-                oa,
+                optionsAction,
                 contextLifetime,
                 optionsLifetime);
         }
