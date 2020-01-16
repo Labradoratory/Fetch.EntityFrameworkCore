@@ -83,18 +83,19 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
             return changes;
         }
 
-        protected PropertyEntry FindProperty(EntityEntry<TEntity> entry, ChangePath path)
+        protected virtual PropertyEntry FindProperty(EntityEntry<TEntity> entry, ChangePath path)
         {
             EntityEntry next = entry;
+            PropertyEntry lastProperty = null;
             for(var i = 0; i < path.Parts.Count; i++)
             {
                 switch(path.Parts[i])
                 {
                     case ChangePathProperty property:
-                        if (i == path.Parts.Count - 1)
-                            return next.Property(property.Property);
-
-                        next = next.Reference(property.Property).TargetEntry;
+                        var member = next.Member(property.Property);
+                        next = member.EntityEntry;
+                        if (member is PropertyEntry)
+                            lastProperty = member as PropertyEntry;
                         break;
                     case ChangePathIndex index:
                         // TODO: Not supported yet.  At the moment, I am unaware of a use case for this, 
@@ -107,7 +108,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
                 }
             }
 
-            throw new InvalidOperationException($"Did not find property specified in path '{path}'.");
+            return lastProperty;
         }
     }
 }

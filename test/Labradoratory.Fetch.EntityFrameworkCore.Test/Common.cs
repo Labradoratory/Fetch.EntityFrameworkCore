@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Labradoratory.Fetch.ChangeTracking;
 using Labradoratory.Fetch.Processors;
 using Microsoft.EntityFrameworkCore;
 
@@ -52,6 +54,12 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
             get => GetValue<TestEntityChild>();
             set => SetValue(value);
         }
+
+        public ChangeTrackingCollection<string> StringCollection
+        {
+            get => GetValue<ChangeTrackingCollection<string>>();
+            set => SetValue(value);
+        }
     }
 
     public class TestEntityChild
@@ -71,6 +79,11 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
         {
             modelBuilder.Entity<TestEntity>().HasKey(e => e.Id);
             modelBuilder.Entity<TestEntity>().OwnsOne(e => e.Child);
+            modelBuilder.Entity<TestEntity>()
+                .Property(e => e.StringCollection)
+                .HasConversion(
+                    v => string.Join(" | ", v),
+                    v => new ChangeTrackingCollection<string>(v.Split(" | ", StringSplitOptions.None)));
 
             base.OnModelCreating(modelBuilder);
         }

@@ -352,6 +352,25 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
 
                 Assert.Throws<ArgumentNullException>(() => subject.GetAsyncQueryResolver<int>(null));
             }
-        }        
+        }
+        
+        // DEBUGGING:  I was just using this test to figure out how to best access properties.
+        //[Fact]
+        //public void ModifyNonNavigationProperty_Success()
+        //{
+        //    var optionsBuilder = new DbContextOptionsBuilder<TestContext>();
+        //    optionsBuilder.UseInMemoryDatabase("ModifyNonNavigationProperty");
+
+        //    using (var context = new TestContext(optionsBuilder.Options))
+        //    {
+        //        var test = new TestEntity
+        //        {
+        //            StringCollection = new ChangeTracking.ChangeTrackingCollection<string>()
+        //        };
+
+        //        var entry = context.Entry(test);
+        //        var member = entry.Member(nameof(TestEntity.StringCollection));
+        //    }
+        //}
     }
 }
