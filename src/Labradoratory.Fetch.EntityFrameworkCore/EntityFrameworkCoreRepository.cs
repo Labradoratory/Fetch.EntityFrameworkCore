@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Labradoratory.Fetch.ChangeTracking;
 using Labradoratory.Fetch.Processors;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Labradoratory.Fetch.EntityFrameworkCore
 {
@@ -72,12 +73,41 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
         /// <inheritdoc />
         protected override async Task<ChangeSet> ExecuteUpdateAsync(TEntity entity, ChangeSet changes, CancellationToken cancellationToken)
         {
-            // TODO: This could probably be made more efficient.  
-            // We have the changes so we can easily identify what should be marked as modified.
-            // This is just easier for now.  Look into making more efficient in the future.
-            Context.Update(entity);
+            var entry = Context.Entry(entity);
+            foreach (var change in changes)
+            {
+                FindProperty(entry, change.Key).IsModified = true;
+            }
+
             await Context.SaveChangesAsync(cancellationToken);
             return changes;
+        }
+
+        protected PropertyEntry FindProperty(EntityEntry<TEntity> entry, ChangePath path)
+        {
+            EntityEntry next = entry;
+            for(var i = 0; i < path.Parts.Count; i++)
+            {
+                switch(path.Parts[i])
+                {
+                    case ChangePathProperty property:
+                        if (i == path.Parts.Count - 1)
+                            return next.Property(property.Property);
+
+                        next = next.Reference(property.Property).TargetEntry;
+                        break;
+                    case ChangePathIndex index:
+                        // TODO: Not supported yet.  At the moment, I am unaware of a use case for this, 
+                        // but if it comes up we should handle it.
+                        throw new NotSupportedException("Updating a nested collection is not supported.");
+                    case ChangePathKey key:
+                        // TODO: Not supported yet.  At the moment, I am unaware of a use case for this, 
+                        // but if it comes up we should handle it.
+                        throw new NotSupportedException("Updating a nested dictionary is not supported.");
+                }
+            }
+
+            throw new InvalidOperationException($"Did not find property specified in path '{path}'.");
         }
     }
 }
