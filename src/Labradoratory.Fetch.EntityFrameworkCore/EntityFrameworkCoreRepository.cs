@@ -73,6 +73,12 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
         /// <inheritdoc />
         protected override async Task<ChangeSet> ExecuteUpdateAsync(TEntity entity, ChangeSet changes, CancellationToken cancellationToken)
         {
+            // TODO: This needs a bunch of work.  It is currently only set up to handle
+            // basic properties and owned objects.
+            //
+            // It may turn out that doing a detect changes and relying on EF change tracking
+            // would be just as fast.  We'll do some more experimenting when we have time.
+
             var entry = Context.Entry(entity);
             foreach (var change in changes)
             {
@@ -99,12 +105,12 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
                         break;
                     case ChangePathIndex index:
                         // TODO: Not supported yet.  At the moment, I am unaware of a use case for this, 
-                        // but if it comes up we should handle it.
-                        throw new NotSupportedException("Updating a nested collection is not supported.");
+                        // but if it comes up we should handle it.  Just skip it.
+                        break;
                     case ChangePathKey key:
                         // TODO: Not supported yet.  At the moment, I am unaware of a use case for this, 
-                        // but if it comes up we should handle it.
-                        throw new NotSupportedException("Updating a nested dictionary is not supported.");
+                        // but if it comes up we should handle it.  Just skip it.
+                        break;
                 }
             }
 
