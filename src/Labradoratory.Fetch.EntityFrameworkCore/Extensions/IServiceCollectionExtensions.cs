@@ -51,7 +51,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         /// <returns>
         ///     The same service collection so that multiple calls can be chained.
         /// </returns>
-        public static IServiceCollection AddDbContext<TContext>(
+        public static IServiceCollection AddDbContextForFetch<TContext>(
             this IServiceCollection serviceCollection,
             Action<EntityFrameworkCoreRepositoryRegistrar<TContext>> repositoryRegistrationAction,
             Action<DbContextOptionsBuilder> optionsAction = null,
@@ -59,7 +59,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
             ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
             where TContext : DbContext
         {
-            return serviceCollection.AddDbContext<TContext, TContext>(repositoryRegistrationAction, optionsAction, contextLifetime, optionsLifetime);
+            return serviceCollection.AddDbContextForFetch<TContext, TContext>(repositoryRegistrationAction, optionsAction, contextLifetime, optionsLifetime);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         /// <returns>
         ///     The same service collection so that multiple calls can be chained.
         /// </returns>
-        public static IServiceCollection AddDbContext<TContextService, TContextImplementation>(
+        public static IServiceCollection AddDbContextForFetch<TContextService, TContextImplementation>(
             this IServiceCollection serviceCollection,
             Action<EntityFrameworkCoreRepositoryRegistrar<TContextImplementation>> repositoryRegistrationAction,
             Action<DbContextOptionsBuilder> optionsAction = null,
@@ -100,7 +100,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
             ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
             where TContextImplementation : DbContext, TContextService
         {
-            repositoryRegistrationAction?.Invoke(new EntityFrameworkCoreRepositoryRegistrar<TContextImplementation>(serviceCollection));
+            serviceCollection.AddRepositoriesForContext(repositoryRegistrationAction);
 
             return serviceCollection.AddDbContext<TContextService, TContextImplementation>(
                 optionsAction,
@@ -116,7 +116,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         /// <param name="serviceCollection">The service collection.</param>
         /// <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
         /// <returns>The same <paramref name="serviceCollection"/> so that multiple calls can be chained.</returns>
-        public static IServiceCollection WithContext<TContext>(
+        public static IServiceCollection AddRepositoriesForContext<TContext>(
             this IServiceCollection serviceCollection,
             Action<EntityFrameworkCoreRepositoryRegistrar<TContext>> repositoryRegistrationAction)
             where TContext : DbContext

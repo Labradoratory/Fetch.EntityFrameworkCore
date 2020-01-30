@@ -136,7 +136,7 @@
             <param name="serviceCollection">The service collection.</param>
             <returns>A <paramref name="serviceCollection"/>.</returns>
         </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.AddDbContext``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``0}},System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.AddDbContextForFetch``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``0}},System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
             <summary>
                 Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
                 You use this method when using dependency injection in your application, such as with ASP.NET.
@@ -167,7 +167,7 @@
                 The same service collection so that multiple calls can be chained.
             </returns>
         </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.AddDbContext``2(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``1}},System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.AddDbContextForFetch``2(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``1}},System.Action{Microsoft.EntityFrameworkCore.DbContextOptionsBuilder},Microsoft.Extensions.DependencyInjection.ServiceLifetime,Microsoft.Extensions.DependencyInjection.ServiceLifetime)">
             <summary>
                 Registers the given context as a service in the <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />.
                 You use this method when using dependency injection in your application, such as with ASP.NET.
@@ -199,7 +199,7 @@
                 The same service collection so that multiple calls can be chained.
             </returns>
         </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.WithContext``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``0}})">
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Extensions.IServiceCollectionExtensions.AddRepositoriesForContext``1(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action{Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar{``0}})">
             <summary>
             Allows registration of repositories for a <see cref="T:Microsoft.EntityFrameworkCore.DbContext"/> that has already been configured
             with Entity Framework Core.

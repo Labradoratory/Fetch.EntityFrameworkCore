@@ -54,7 +54,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Extensions
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()));
 
             var subject = mockServiceCollection.Object;
-            var result = subject.AddDbContext<TestContext>(
+            var result = subject.AddDbContextForFetch<TestContext>(
                 repoRegistrar =>
                 {
                     repoRegistrar.RegisterRepository<TestEntity>();
@@ -99,7 +99,7 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Extensions
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()));
 
             var subject = mockServiceCollection.Object;
-            var result = subject.AddDbContext<TestContext, TestContext>(
+            var result = subject.AddDbContextForFetch<TestContext, TestContext>(
                 repoRegistrar =>
                 {
                     repoRegistrar.RegisterRepository<TestEntity>();
@@ -140,13 +140,13 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Extensions
         }
 
         [Fact]
-        public void WithContext_Success()
+        public void AddRepositoriesForContext_Success()
         {
             var mockServiceCollection = new Mock<IServiceCollection>(MockBehavior.Strict);
             object expectedRepoRegistrar = null;
 
             var subject = mockServiceCollection.Object;
-            var result = subject.WithContext<TestContext>(repoRegistrar => expectedRepoRegistrar = repoRegistrar);
+            var result = subject.AddRepositoriesForContext<TestContext>(repoRegistrar => expectedRepoRegistrar = repoRegistrar);
 
             Assert.Same(subject, result);
             Assert.IsType<EntityFrameworkCoreRepositoryRegistrar<TestContext>>(expectedRepoRegistrar);
