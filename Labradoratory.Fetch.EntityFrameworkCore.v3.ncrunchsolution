@@ -1,6 +1,7 @@
 ﻿<SolutionConfiguration>
   <Settings>
     <AllowParallelTestExecution>True</AllowParallelTestExecution>
+    <InstrumentationMode>Optimised</InstrumentationMode>
     <MetricsExclusionList>
       <Value>test\Labradoratory.Fetch.EntityFrameworkCore.Test\Labradoratory.Fetch.EntityFrameworkCore.Test.csproj</Value>
       <Value>Common.cs:test\Labradoratory.Fetch.EntityFrameworkCore.Test\Labradoratory.Fetch.EntityFrameworkCore.Test.csproj</Value>
