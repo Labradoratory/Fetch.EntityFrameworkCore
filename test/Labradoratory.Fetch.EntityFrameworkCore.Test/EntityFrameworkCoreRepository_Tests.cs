@@ -353,6 +353,75 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
                 Assert.Throws<ArgumentNullException>(() => subject.GetAsyncQueryResolver<int>(null));
             }
         }
+
+        /// <summary>
+        /// This test makes sure that entity tracking isn't used.  An error was occuring
+        /// because an Add operation caused the context to track that entity.  If a user then
+        /// did a query that got the already added entity, doing a update would cause an exception:
+        /// 
+        /// "System.InvalidOperationException : The instance of entity type 'TestEntity' cannot be 
+        /// tracked because another instance with the same key value for {'Id'} is already being tracked. 
+        /// When attaching existing entities, ensure that only one entity instance with a given key value 
+        /// is attached."
+        /// </summary>
+        [Fact]
+        public async Task AddGetUpdate_Succeeds()
+        {
+            var mockProcessorProvider = new Mock<IProcessorProvider>(MockBehavior.Strict);
+            mockProcessorProvider
+                .Setup(p => p.GetProcessors<EntityAddingPackage<TestEntity>>())
+                .Returns(new List<IProcessor<EntityAddingPackage<TestEntity>>>());
+            mockProcessorProvider
+                .Setup(p => p.GetProcessors<EntityAddedPackage<TestEntity>>())
+                .Returns(new List<IProcessor<EntityAddedPackage<TestEntity>>>());
+            mockProcessorProvider
+                .Setup(p => p.GetProcessors<EntityUpdatingPackage<TestEntity>>())
+                .Returns(new List<IProcessor<EntityUpdatingPackage<TestEntity>>>());
+            mockProcessorProvider
+                .Setup(p => p.GetProcessors<EntityUpdatedPackage<TestEntity>>())
+                .Returns(new List<IProcessor<EntityUpdatedPackage<TestEntity>>>());
+
+            var optionsBuilder = new DbContextOptionsBuilder<TestContext>();
+            optionsBuilder.UseInMemoryDatabase("TestAdd");
+
+            var expectedEntity = new TestEntity
+            {
+                StringValue = "My test value",
+                IntValue = 12345,
+                DoubleValue = 123.45,
+                DateTimeValue = DateTimeOffset.UtcNow,
+                Child = new TestEntityChild
+                {
+                    StringValue = "My child test value"
+                }
+            };
+
+            var newIntValue1 = 54321;
+            var newIntValue2 = 15243;
+
+            using (var context = new TestContext(optionsBuilder.Options))
+            {
+                var subject = new EntityFrameworkCoreRepository<TestEntity, TestContext>(
+                    context,
+                    new ProcessorPipeline(mockProcessorProvider.Object));
+
+                // Add the entity.  It should not be tracked after this operation.
+                await subject.AddAsync(expectedEntity, CancellationToken.None);
+
+                // Get the entity and update to make sure it wasn't tracked by the add.  
+                // If the entity IS being tracked, this will throw.  It should not.
+                // It should not be tracked after this operation either.
+                var sameEntity1 = await subject.GetAsyncQueryResolver().FirstOrDefaultAsync(e => e.Id == expectedEntity.Id);
+                sameEntity1.IntValue = newIntValue1;
+                await subject.UpdateAsync(sameEntity1, CancellationToken.None);
+
+                // Get the entity and update again to make sure the update above didn't track.  
+                // If the entity IS being tracked, this will throw.  It should not.
+                var sameEntity2 = await subject.GetAsyncQueryResolver().FirstOrDefaultAsync(e => e.Id == expectedEntity.Id);
+                sameEntity2.IntValue = newIntValue2;
+                await subject.UpdateAsync(sameEntity2, CancellationToken.None);
+            }
+        }
         
         // DEBUGGING:  I was just using this test to figure out how to best access properties.
         //[Fact]

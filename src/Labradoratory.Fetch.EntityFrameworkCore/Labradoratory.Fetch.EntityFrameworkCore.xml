@@ -209,56 +209,5 @@
             <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
             <returns>The same <paramref name="serviceCollection"/> so that multiple calls can be chained.</returns>
         </member>
-        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper">
-            <summary>
-            A base class that simply passes <see cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection"/> calls to a wrapped instance.
-            </summary>
-            <seealso cref="T:Microsoft.Extensions.DependencyInjection.IServiceCollection" />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.#ctor(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper"/> class.
-            </summary>
-            <param name="serviceCollection">The service collection.</param>
-        </member>
-        <member name="P:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Item(System.Int32)">
-            <inheritdoc />
-        </member>
-        <member name="P:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Count">
-            <inheritdoc />
-        </member>
-        <member name="P:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.IsReadOnly">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Add(Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Clear">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Contains(Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.CopyTo(Microsoft.Extensions.DependencyInjection.ServiceDescriptor[],System.Int32)">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.GetEnumerator">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.IndexOf(Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Insert(System.Int32,Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.Remove(Microsoft.Extensions.DependencyInjection.ServiceDescriptor)">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.RemoveAt(System.Int32)">
-            <inheritdoc />
-        </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.ServiceCollectionWrapper.System#Collections#IEnumerable#GetEnumerator">
-            <inheritdoc />
-        </member>
     </members>
 </doc>

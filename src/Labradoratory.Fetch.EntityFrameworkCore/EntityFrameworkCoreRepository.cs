@@ -59,8 +59,11 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
         /// <inheritdoc />
         protected override async Task ExecuteAddAsync(TEntity entity, CancellationToken cancellationToken)
         {
-            await Context.AddAsync(entity, cancellationToken);
+            var entry = await Context.AddAsync(entity, cancellationToken);
             await Context.SaveChangesAsync(cancellationToken);
+
+            // Detach the entity after we are finished.  Don't want it tracked.
+            entry.State = EntityState.Detached;
         }
 
         /// <inheritdoc />
@@ -86,6 +89,10 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
             }
 
             await Context.SaveChangesAsync(cancellationToken);
+
+            // Detach the entity after we are finished.  Don't want it tracked.
+            entry.State = EntityState.Detached;
+
             return changes;
         }
 
