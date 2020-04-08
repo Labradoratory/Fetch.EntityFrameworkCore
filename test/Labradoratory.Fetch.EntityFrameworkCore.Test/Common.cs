@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Labradoratory.Fetch.ChangeTracking;
 using Labradoratory.Fetch.Processors;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +20,11 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
         public override object[] GetKeys()
         {
             return ToKeys(Id);
+        }
+
+        public override bool HasKeys()
+        {
+            throw new NotImplementedException();
         }
 
         public int Id { get; set; }
