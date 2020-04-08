@@ -22,11 +22,6 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
             return ToKeys(Id);
         }
 
-        public override bool HasKeys()
-        {
-            throw new NotImplementedException();
-        }
-
         public int Id { get; set; }
 
         public string StringValue
