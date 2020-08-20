@@ -36,9 +36,11 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
         protected TContext Context { get; }
 
         /// <inheritdoc />
-        public override Task<TEntity> FindAsync(object[] keys, CancellationToken cancellationToken)
+        public override async Task<TEntity> FindAsync(object[] keys, CancellationToken cancellationToken = default)
         {
-            return Context.FindAsync<TEntity>(keys, cancellationToken).AsTask();
+            var entity = await Context.FindAsync<TEntity>(keys, cancellationToken);
+            Context.Entry(entity).State = EntityState.Detached;
+            return entity;
         }
 
         /// <inheritdoc />
