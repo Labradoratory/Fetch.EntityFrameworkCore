@@ -251,6 +251,25 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
         }
 
         [Fact]
+        public async Task FindAsync_WhenNotFound_Success()
+        {
+            var mockProcessorProvider = new Mock<IProcessorProvider>(MockBehavior.Strict);
+
+            var optionsBuilder = new DbContextOptionsBuilder<TestContext>();
+            optionsBuilder.UseInMemoryDatabase("TestFind");
+
+            using (var context = new TestContext(optionsBuilder.Options))
+            {
+                var subject = new EntityFrameworkCoreRepository<TestEntity, TestContext>(
+                    context,
+                    new ProcessorPipeline(mockProcessorProvider.Object));
+
+                var result = await subject.FindAsync(Entity.ToKeys(12345), CancellationToken.None);
+                Assert.Null(result);
+            }
+        }
+
+        [Fact]
         public async Task Get_Success()
         {
             var mockProcessorProvider = new Mock<IProcessorProvider>(MockBehavior.Strict);
