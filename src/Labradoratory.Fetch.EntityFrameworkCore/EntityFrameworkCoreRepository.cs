@@ -39,7 +39,9 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
         public override async Task<TEntity> FindAsync(object[] keys, CancellationToken cancellationToken = default)
         {
             var entity = await Context.FindAsync<TEntity>(keys, cancellationToken);
-            Context.Entry(entity).State = EntityState.Detached;
+            if (entity != null)
+                Context.Entry(entity).State = EntityState.Detached;
+
             return entity;
         }
 
