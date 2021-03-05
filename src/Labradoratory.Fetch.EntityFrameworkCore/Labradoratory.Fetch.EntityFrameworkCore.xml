@@ -94,6 +94,14 @@
         <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.ExecuteUpdateAsync(`0,Labradoratory.Fetch.ChangeTracking.ChangeSet,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.FindProperty(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry{`0},Labradoratory.Fetch.ChangeTracking.ChangePath)">
+            <summary>
+            Finds the property from the provided path.
+            </summary>
+            <param name="entry">The entry.</param>
+            <param name="path">The path.</param>
+            <returns>The property or NULL if it is not found.</returns>
+        </member>
         <member name="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar`1">
             <summary>
             A class to help register Fetch repositories that target Microsoft's Entity Framework Core.
