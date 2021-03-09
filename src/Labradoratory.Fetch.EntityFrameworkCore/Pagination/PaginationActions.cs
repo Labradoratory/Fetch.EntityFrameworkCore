@@ -31,15 +31,21 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Pagination
         private Expression<Func<TEntity, TKey>> OrderBy { get; }
 
         /// <inheritdoc />
-        public Task<int> CountAsync(CancellationToken cancellationToken = default)
+        public Task<int> CountAsync(Func<IQueryable<TEntity>, IQueryable<TEntity>> filter = null, CancellationToken cancellationToken = default)
         {
-            return GetQuery().CountAsync(cancellationToken);
+            if (filter == null)
+                filter = new Func<IQueryable<TEntity>, IQueryable<TEntity>>(query => query);
+
+            return filter(GetQuery()).CountAsync(cancellationToken);
         }
 
         /// <inheritdoc />
-        public async Task<ResultPage<TEntity>> GetPageAsync(int page, int pageSize, CancellationToken cancellationToken = default)
+        public async Task<ResultPage<TEntity>> GetPageAsync(int page, int pageSize, Func<IQueryable<TEntity>, IQueryable<TEntity>> filter = null, CancellationToken cancellationToken = default)
         {
-            var query = GetQuery().OrderBy(OrderBy).Skip(page * pageSize).Take(pageSize);
+            if (filter == null)
+                filter = new Func<IQueryable<TEntity>, IQueryable<TEntity>>(query => query);
+
+            var query = filter(GetQuery()).OrderBy(OrderBy).Skip(page * pageSize).Take(pageSize);
             var results = await query.ToListAsync();
             return new ResultPage<TEntity>(page, pageSize, results);
         }
