@@ -19,27 +19,27 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Pagination
         /// <summary>
         /// Initializes a new instance of the <see cref="PaginationActions{TEntity, TKey}"/> class.
         /// </summary>
-        /// <param name="getDbSet">The get database set.</param>
-        /// <param name="orderBy">The expressio to order by when paging.</param>
-        public PaginationActions(Func<DbSet<TEntity>> getDbSet, Expression<Func<TEntity, TKey>> orderBy)
+        /// <param name="getQuery">The function to get the query to get pages for.</param>
+        /// <param name="orderBy">The expression to order by when paging.</param>
+        public PaginationActions(Func<IQueryable<TEntity>> getQuery, Expression<Func<TEntity, TKey>> orderBy)
         {
-            GetDbSet = getDbSet;
+            GetQuery = getQuery;
             OrderBy = orderBy;
         }
 
-        private Func<DbSet<TEntity>> GetDbSet { get; }
+        private Func<IQueryable<TEntity>> GetQuery { get; }
         private Expression<Func<TEntity, TKey>> OrderBy { get; }
 
         /// <inheritdoc />
         public Task<int> CountAsync(CancellationToken cancellationToken = default)
         {
-            return GetDbSet().CountAsync(cancellationToken);
+            return GetQuery().CountAsync(cancellationToken);
         }
 
         /// <inheritdoc />
         public async Task<ResultPage<TEntity>> GetPageAsync(int page, int pageSize, CancellationToken cancellationToken = default)
         {
-            var query = GetDbSet().OrderBy(OrderBy).Skip(page * pageSize).Take(pageSize);
+            var query = GetQuery().OrderBy(OrderBy).Skip(page * pageSize).Take(pageSize);
             var results = await query.ToListAsync();
             return new ResultPage<TEntity>(page, pageSize, results);
         }
