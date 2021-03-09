@@ -100,6 +100,12 @@ namespace Labradoratory.Fetch.EntityFrameworkCore
             return changes;
         }
 
+        /// <summary>
+        /// Finds the property identified by the provided <see cref="ChangePath"/>.
+        /// </summary>
+        /// <param name="entry">The entry to look for the property in.</param>
+        /// <param name="path">The path to the property.</param>
+        /// <returns></returns>
         protected virtual PropertyEntry FindProperty(EntityEntry<TEntity> entry, ChangePath path)
         {
             EntityEntry next = entry;

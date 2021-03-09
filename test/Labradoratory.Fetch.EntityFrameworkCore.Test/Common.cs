@@ -1,11 +1,12 @@
 ﻿using System;
+using Labradoratory.Fetch.AddOn.Pagination;
 using Labradoratory.Fetch.ChangeTracking;
 using Labradoratory.Fetch.Processors;
 using Microsoft.EntityFrameworkCore;
 
 namespace Labradoratory.Fetch.EntityFrameworkCore.Test
 {
-    public class TestEntity : Entity
+    public class TestEntity : Entity, IPageable
     {
         public override object[] DecodeKeys(string encodedKeys)
         {

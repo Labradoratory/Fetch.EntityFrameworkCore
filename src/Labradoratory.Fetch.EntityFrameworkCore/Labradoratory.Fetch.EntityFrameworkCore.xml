@@ -94,6 +94,14 @@
         <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.ExecuteUpdateAsync(`0,Labradoratory.Fetch.ChangeTracking.ChangeSet,System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepository`2.FindProperty(Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry{`0},Labradoratory.Fetch.ChangeTracking.ChangePath)">
+            <summary>
+            Finds the property identified by the provided <see cref="T:Labradoratory.Fetch.ChangeTracking.ChangePath"/>.
+            </summary>
+            <param name="entry">The entry to look for the property in.</param>
+            <param name="path">The path to the property.</param>
+            <returns></returns>
+        </member>
         <member name="T:Labradoratory.Fetch.EntityFrameworkCore.EntityFrameworkCoreRepositoryRegistrar`1">
             <summary>
             A class to help register Fetch repositories that target Microsoft's Entity Framework Core.
@@ -208,6 +216,27 @@
             <param name="serviceCollection">The service collection.</param>
             <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
             <returns>The same <paramref name="serviceCollection"/> so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Labradoratory.Fetch.EntityFrameworkCore.Pagination.PaginationActions`2">
+            <summary>
+            Actions for pagination that work on an Entity Framework <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="TKey">The type of the key.</typeparam>
+            <seealso cref="T:Labradoratory.Fetch.AddOn.Pagination.ISupportsPagination`1" />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Pagination.PaginationActions`2.#ctor(System.Func{Microsoft.EntityFrameworkCore.DbSet{`0}},System.Linq.Expressions.Expression{System.Func{`0,`1}})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Labradoratory.Fetch.EntityFrameworkCore.Pagination.PaginationActions`2"/> class.
+            </summary>
+            <param name="getDbSet">The get database set.</param>
+            <param name="orderBy">The expressio to order by when paging.</param>
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Pagination.PaginationActions`2.CountAsync(System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Pagination.PaginationActions`2.GetPageAsync(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
         </member>
     </members>
 </doc>
