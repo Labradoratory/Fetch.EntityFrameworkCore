@@ -29,8 +29,9 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         /// </summary>
         /// <typeparam name="TContext"> The type of context to be registered. </typeparam>
         /// <param name="serviceCollection">The service collection.</param>
-        /// <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
+        /// <param name="repositoryRegistrationAction">[Optional] An action that can we used to register repositories for the context.</param>
         /// <param name="optionsAction">
+        ///     [Optional]
         ///     <para>
         ///         An optional action to configure the <see cref="DbContextOptions" /> for the context. This provides an
         ///         alternative to performing configuration of the context by overriding the
@@ -46,14 +47,14 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         ///         <see cref="DbContextOptions{TContext}" /> and passes it to the base constructor of <see cref="DbContext" />.
         ///     </para>
         /// </param>
-        /// <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-        /// <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
+        /// <param name="contextLifetime">[Optional(Default = <see cref="ServiceLifetime.Scoped"/>)] The lifetime with which to register the DbContext service in the container. </param>
+        /// <param name="optionsLifetime">[Optional(Default = <see cref="ServiceLifetime.Scoped"/>)] The lifetime with which to register the DbContextOptions service in the container. </param>
         /// <returns>
         ///     The same service collection so that multiple calls can be chained.
         /// </returns>
         public static IServiceCollection AddDbContextForFetch<TContext>(
             this IServiceCollection serviceCollection,
-            Action<EntityFrameworkCoreRepositoryRegistrar<TContext>> repositoryRegistrationAction,
+            Action<EntityFrameworkCoreRepositoryRegistrar<TContext>> repositoryRegistrationAction = null,
             Action<DbContextOptionsBuilder> optionsAction = null,
             ServiceLifetime contextLifetime = ServiceLifetime.Scoped,
             ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
@@ -70,8 +71,9 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         /// <typeparam name="TContextService"> The class or interface that will be used to resolve the context from the container. </typeparam>
         /// <typeparam name="TContextImplementation"> The concrete implementation type to create. </typeparam>
         /// <param name="serviceCollection">The service collection.</param>
-        /// <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
+        /// <param name="repositoryRegistrationAction">[Optional] An action that can we used to register repositories for the context.</param>
         /// <param name="optionsAction">
+        ///     [Optional]
         ///     <para>
         ///         An optional action to configure the <see cref="DbContextOptions" /> for the context. This provides an
         ///         alternative to performing configuration of the context by overriding the
@@ -87,20 +89,21 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Extensions
         ///         <see cref="DbContextOptions{TContext}" /> and passes it to the base constructor of <see cref="DbContext" />.
         ///     </para>
         /// </param>
-        /// <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-        /// <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
+        /// <param name="contextLifetime">[Optional(Default = <see cref="ServiceLifetime.Scoped"/>)] The lifetime with which to register the DbContext service in the container. </param>
+        /// <param name="optionsLifetime">[Optional(Default = <see cref="ServiceLifetime.Scoped"/>)] The lifetime with which to register the DbContextOptions service in the container. </param>
         /// <returns>
         ///     The same service collection so that multiple calls can be chained.
         /// </returns>
         public static IServiceCollection AddDbContextForFetch<TContextService, TContextImplementation>(
             this IServiceCollection serviceCollection,
-            Action<EntityFrameworkCoreRepositoryRegistrar<TContextImplementation>> repositoryRegistrationAction,
+            Action<EntityFrameworkCoreRepositoryRegistrar<TContextImplementation>> repositoryRegistrationAction = null,
             Action<DbContextOptionsBuilder> optionsAction = null,
             ServiceLifetime contextLifetime = ServiceLifetime.Scoped,
             ServiceLifetime optionsLifetime = ServiceLifetime.Scoped)
             where TContextImplementation : DbContext, TContextService
         {
-            serviceCollection.AddRepositoriesForContext(repositoryRegistrationAction);
+            if(repositoryRegistrationAction != null)
+                serviceCollection.AddRepositoriesForContext(repositoryRegistrationAction);
 
             return serviceCollection.AddDbContext<TContextService, TContextImplementation>(
                 optionsAction,

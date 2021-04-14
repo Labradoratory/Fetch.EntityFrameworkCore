@@ -152,8 +152,9 @@
             </summary>
             <typeparam name="TContext"> The type of context to be registered. </typeparam>
             <param name="serviceCollection">The service collection.</param>
-            <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
+            <param name="repositoryRegistrationAction">[Optional] An action that can we used to register repositories for the context.</param>
             <param name="optionsAction">
+                [Optional]
                 <para>
                     An optional action to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions" /> for the context. This provides an
                     alternative to performing configuration of the context by overriding the
@@ -169,8 +170,8 @@
                     <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1" /> and passes it to the base constructor of <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
                 </para>
             </param>
-            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
+            <param name="contextLifetime">[Optional(Default = <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Scoped"/>)] The lifetime with which to register the DbContext service in the container. </param>
+            <param name="optionsLifetime">[Optional(Default = <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Scoped"/>)] The lifetime with which to register the DbContextOptions service in the container. </param>
             <returns>
                 The same service collection so that multiple calls can be chained.
             </returns>
@@ -184,8 +185,9 @@
             <typeparam name="TContextService"> The class or interface that will be used to resolve the context from the container. </typeparam>
             <typeparam name="TContextImplementation"> The concrete implementation type to create. </typeparam>
             <param name="serviceCollection">The service collection.</param>
-            <param name="repositoryRegistrationAction">An action that can we used to register repositories for the context.</param>
+            <param name="repositoryRegistrationAction">[Optional] An action that can we used to register repositories for the context.</param>
             <param name="optionsAction">
+                [Optional]
                 <para>
                     An optional action to configure the <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions" /> for the context. This provides an
                     alternative to performing configuration of the context by overriding the
@@ -201,8 +203,8 @@
                     <see cref="T:Microsoft.EntityFrameworkCore.DbContextOptions`1" /> and passes it to the base constructor of <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />.
                 </para>
             </param>
-            <param name="contextLifetime"> The lifetime with which to register the DbContext service in the container. </param>
-            <param name="optionsLifetime"> The lifetime with which to register the DbContextOptions service in the container. </param>
+            <param name="contextLifetime">[Optional(Default = <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Scoped"/>)] The lifetime with which to register the DbContext service in the container. </param>
+            <param name="optionsLifetime">[Optional(Default = <see cref="F:Microsoft.Extensions.DependencyInjection.ServiceLifetime.Scoped"/>)] The lifetime with which to register the DbContextOptions service in the container. </param>
             <returns>
                 The same service collection so that multiple calls can be chained.
             </returns>
