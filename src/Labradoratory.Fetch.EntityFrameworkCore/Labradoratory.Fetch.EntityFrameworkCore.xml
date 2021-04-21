@@ -237,7 +237,7 @@
         <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Pagination.PaginationActions`2.CountAsync(System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Pagination.PaginationActions`2.GetPageAsync(System.Int32,System.Int32,System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Threading.CancellationToken)">
+        <member name="M:Labradoratory.Fetch.EntityFrameworkCore.Pagination.PaginationActions`2.GetPageAsync(Labradoratory.Fetch.AddOn.Pagination.PageInfo,System.Func{System.Linq.IQueryable{`0},System.Linq.IQueryable{`0}},System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
     </members>

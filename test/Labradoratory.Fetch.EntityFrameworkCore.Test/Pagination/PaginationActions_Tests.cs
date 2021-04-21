@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Labradoratory.Fetch.AddOn.Pagination;
 using Labradoratory.Fetch.EntityFrameworkCore.Pagination;
 using Labradoratory.Fetch.Processors;
 using Microsoft.EntityFrameworkCore;
@@ -84,10 +85,10 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Pagination
 
             var subject = new PaginationActions<TestEntity, int>(() => context.Set<TestEntity>(), e => e.IntValue);
 
-            var page = 0;
+            var page = 1;
             while (true)
             {
-                var result = await subject.GetPageAsync(page, pageSize, cancellationToken: CancellationToken.None);
+                var result = await subject.GetPageAsync(new PageInfo(page, pageSize), cancellationToken: CancellationToken.None);
                 var resultCount = result.Results.Count();
                 if (resultCount == 0)
                     break;
@@ -121,10 +122,10 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Pagination
 
             var subject = new PaginationActions<TestEntity, int>(() => context.Set<TestEntity>(), e => e.IntValue);
 
-            var page = 0;
+            var page = 1;
             while (true)
             {
-                var result = await subject.GetPageAsync(page, pageSize, query => query.Where(t => t.IntValue < average), CancellationToken.None);
+                var result = await subject.GetPageAsync(new PageInfo(page, pageSize), query => query.Where(t => t.IntValue < average), CancellationToken.None);
                 var resultCount = result.Results.Count();
                 if (resultCount == 0)
                     break;

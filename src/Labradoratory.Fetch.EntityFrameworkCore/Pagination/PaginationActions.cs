@@ -40,14 +40,14 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Pagination
         }
 
         /// <inheritdoc />
-        public async Task<ResultPage<TEntity>> GetPageAsync(int page, int pageSize, Func<IQueryable<TEntity>, IQueryable<TEntity>> filter = null, CancellationToken cancellationToken = default)
+        public async Task<ResultPage<TEntity>> GetPageAsync(PageInfo pageInfo, Func<IQueryable<TEntity>, IQueryable<TEntity>> filter = null, CancellationToken cancellationToken = default)
         {
             if (filter == null)
                 filter = new Func<IQueryable<TEntity>, IQueryable<TEntity>>(query => query);
 
-            var query = filter(GetQuery()).OrderBy(OrderBy).Skip(page * pageSize).Take(pageSize);
+            var query = filter(GetQuery()).OrderBy(OrderBy).Skip(pageInfo.Page * pageInfo.PageSize).Take(pageInfo.PageSize);
             var results = await query.ToListAsync();
-            return new ResultPage<TEntity>(page, pageSize, results);
+            return new ResultPage<TEntity>(pageInfo.Page, pageInfo.PageSize, results);
         }
     }
 }
