@@ -34,6 +34,10 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Extensions
             mockServiceCollection
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()))
                 .Callback<ServiceDescriptor>(d => serviceDescriptors.Add(d));
+            mockServiceCollection
+                .SetupGet(sc => sc.Count)
+                .Returns(0);
+
             var expectedServiceCollection = mockServiceCollection.Object;
             var result = expectedServiceCollection.AddFetchForEntityFrameworkCore();
 
@@ -52,6 +56,9 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Extensions
                 .Returns(Enumerable.Empty<ServiceDescriptor>().GetEnumerator());
             mockServiceCollection
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()));
+            mockServiceCollection
+                .SetupGet(sc => sc.Count)
+                .Returns(0);
 
             var subject = mockServiceCollection.Object;
             var result = subject.AddDbContextForFetch<TestContext>(
@@ -97,6 +104,9 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test.Extensions
                 .Returns(Enumerable.Empty<ServiceDescriptor>().GetEnumerator());
             mockServiceCollection
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()));
+            mockServiceCollection
+                .SetupGet(sc => sc.Count)
+                .Returns(0);
 
             var subject = mockServiceCollection.Object;
             var result = subject.AddDbContextForFetch<TestContext, TestContext>(
