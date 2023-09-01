@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Company>Labradoratory</Company>
+    <Authors>Ed Downs</Authors>
+    <Copyright>2019</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>An implementation of the Labradoratory.Fetch respository that targets Microsoft's Entity Framework Core.</Description>
+    <RepositoryType>github</RepositoryType>
+    <PackageTags>repository entity framework core ef fetch</PackageTags>
+    <RepositoryUrl>https://github.com/Labradoratory/Fetch.EntityFrameworkCore</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>.\Labradoratory.Fetch.EntityFrameworkCore.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Labradoratory.Fetch" Version="1.0.0" />
+    <PackageReference Include="Labradoratory.Fetch.AddOn.Pagination" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.14" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.14" />
+  </ItemGroup>
+
+</Project>
