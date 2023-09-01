@@ -19,6 +19,9 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
             mockServiceCollection
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()))
                 .Callback<ServiceDescriptor>(d => serviceDescriptors.Add(d));
+            mockServiceCollection
+                .SetupGet(sc => sc.Count)
+                .Returns(0);
 
             var subject = new EntityFrameworkCoreRepositoryRegistrar<TestContext>(mockServiceCollection.Object);
             subject.RegisterRepository<TestEntity>();
@@ -40,6 +43,9 @@ namespace Labradoratory.Fetch.EntityFrameworkCore.Test
             mockServiceCollection
                 .Setup(sc => sc.Add(It.IsAny<ServiceDescriptor>()))
                 .Callback<ServiceDescriptor>(d => serviceDescriptors.Add(d));
+            mockServiceCollection
+                .SetupGet(sc => sc.Count)
+                .Returns(0);
 
             var subject = new EntityFrameworkCoreRepositoryRegistrar<TestContext>(mockServiceCollection.Object);
             subject.RegisterRepository<TestEntity, TestRepository>();

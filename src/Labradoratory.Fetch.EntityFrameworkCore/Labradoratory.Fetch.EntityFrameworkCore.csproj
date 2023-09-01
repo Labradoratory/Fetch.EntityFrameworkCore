@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
+    <IsPackable>true</IsPackable>
     <Company>Labradoratory</Company>
     <Authors>Ed Downs</Authors>
     <Copyright>2019</Copyright>
@@ -24,11 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Labradoratory.Fetch" Version="1.0.0" />
-    <PackageReference Include="Labradoratory.Fetch.AddOn.Pagination" Version="1.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.14" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.14" />
+    <PackageReference Include="Labradoratory.Fetch" Version="2.0.1" />
+    <PackageReference Include="Labradoratory.Fetch.AddOn.Pagination" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.10" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
 </Project>
